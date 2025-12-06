@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Layout from "./pages/Layout";
-import ChatBox from "./pages/ChatBox";
+
 import Login from "./pages/Login";
+import { MainLayout } from "./pages/Layout";
+import { ChatPage } from "./pages/ChatBox";
 
 const App = () => {
   return (
@@ -10,8 +11,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<Layout />}>
-          <Route path="/chat" element={<ChatBox />} />
+        <Route element={< MainLayout/>}>
+          <Route path="/chat" element={<ChatPage />} />
         </Route>
       </Routes>
     </div>

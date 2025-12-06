@@ -23,7 +23,7 @@ const Login = () => {
   } = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
   });
-  const {isPending} = useMutation({
+  const {isPending,mutate} = useMutation({
     mutationFn: loginUser,
     onSuccess: (data: LoginSchemaType) => {
       console.log("Login success:", data);
@@ -32,8 +32,6 @@ const Login = () => {
       console.log("Login failed:", error);
     },
   });
-   console.log(errors,isDirty,isLoading);
-   
   const submit = (data: LoginSchemaType) => {
     console.log(isSignUp ? "Sign Up Data:" : "Login Data:", data,errors,isDirty,isLoading);
   };
