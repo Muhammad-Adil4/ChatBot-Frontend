@@ -7,10 +7,10 @@ interface WelcomeScreenProps {
 
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onSuggestionClick }) => (
   <div className="h-full flex flex-col items-center justify-center text-center space-y-6 animate-fadeIn">
-    <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-4 rounded-2xl shadow-lg mb-4">
+    <div className="bg-linear-to-br from-blue-500 to-purple-600 p-4 rounded-2xl shadow-lg mb-4">
       <Sparkles className="w-12 h-12 text-white" />
     </div>
-    <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 pb-2">
+    <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-600 via-purple-600 to-pink-500 pb-2">
       Hello, User
     </h1>
     <p className="text-xl text-gray-400 font-medium">How can I help you today?</p>

@@ -13,7 +13,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   <div className={`flex gap-4 flex-wrap max-w-full ${isUser ? 'flex-row-reverse' : 'flex-row'}`}>
     
     {/* Avatar */}
-    <div className="flex-shrink-0 mt-1">
+    <div className="shrink-0 mt-1">
       {message.sender === 'ai' ? (
         <div className="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center shadow-sm">
           <Sparkles size={16} className="text-blue-500" />
@@ -30,7 +30,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       <div className="font-semibold text-xs text-gray-400 mb-1 px-1">
         {isUser ? 'You' : 'Gemini'}
       </div>
-      <div className={`text-base leading-relaxed p-3 rounded-2xl whitespace-pre-wrap break-words ${
+      <div className={`text-base leading-relaxed p-3 rounded-2xl whitespace-pre-wrap wrap-break-word ${
         isUser 
           ? 'bg-blue-100 text-gray-900 rounded-tr-sm' 
           : 'bg-gray-100 text-gray-900'
