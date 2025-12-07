@@ -5,20 +5,27 @@ import { TypingIndicator } from "../components/TypingIndicator";
 import { WelcomeScreen } from "../components/WelcomeScreen";
 import { Sparkles } from "lucide-react";
 import type { Message } from "../lib/types";
+
 export const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // ----------------- Scroll function with offset -----------------
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+      // Add 50px offset
+      window.scrollBy(0, -50);
+    }
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [messages, isTyping]);
 
+  // ----------------- Send message -----------------
   const handleSend = () => {
     if (!input.trim()) return;
     const userMsg: Message = { id: Date.now(), content: input, sender: "user" };
@@ -38,9 +45,10 @@ export const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col relative overflow-hidden">
-      <div className="flex-1 overflow-y-auto p-4 md:p-6 pb-32 w-full flex justify-center">
-        <div className="flex-1 max-w-3xl space-y-4 w-full">
+    <div className="flex-1 flex flex-col h-full overflow-hidden relative">
+      {/* Messages Container */}
+      <div className="flex-1 overflow-y-auto p-4 md:p-6 pb-[80px]">
+        <div className="flex flex-col space-y-4 w-full max-w-3xl mx-auto">
           {messages.length === 0 ? (
             <WelcomeScreen onSuggestionClick={(text) => setInput(text)} />
           ) : (
@@ -50,10 +58,7 @@ export const ChatPage: React.FC = () => {
           {isTyping && (
             <div className="flex gap-4 max-w-[80%]">
               <div className="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center shadow-sm mt-1">
-                <Sparkles
-                  size={16}
-                  className="text-blue-500 animate-spin-slow"
-                />
+                <Sparkles size={16} className="text-blue-500 animate-spin-slow" />
               </div>
               <TypingIndicator />
             </div>
@@ -63,12 +68,15 @@ export const ChatPage: React.FC = () => {
         </div>
       </div>
 
-      <ChatInput
-        input={input}
-        setInput={setInput}
-        onSend={handleSend}
-        disabled={false}
-      />
+      {/* Chat Input sticky bottom */}
+      <div className="sticky bottom-0 bg-white dark:bg-gray-900 mt-40 p-4 md:p-6">
+        <ChatInput
+          input={input}
+          setInput={setInput}
+          onSend={handleSend}
+          disabled={false}
+        />
+      </div>
     </div>
   );
 };

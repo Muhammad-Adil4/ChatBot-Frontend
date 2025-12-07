@@ -15,10 +15,12 @@ import { Input } from "./../components/ui/input";
 import { Button } from "./../components/ui/button";
 import { Checkbox } from "./../components/ui/checkbox";
 import type { AxiosError } from "axios";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
-  const [isSignUp, setIsSignUp] = useState(false);
-
+  const location = useLocation();
+  const mode = location.state?.mode;
+  const [isSignUp, setIsSignUp] = useState(mode === "signup");
   const {
     control,
     handleSubmit,

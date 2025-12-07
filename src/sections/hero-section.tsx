@@ -1,10 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import TiltedImage from "../components/tilt-image";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
     return (
-        <section className="flex flex-col items-center -mt-18">
+        <section id="#" className="flex flex-col items-center -mt-18">
             {/* Background SVG */}
             <motion.svg
                 className="absolute -z-10 w-full -mt-40 md:mt-0"
@@ -69,10 +70,10 @@ export default function HeroSection() {
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 320, damping: 70, mass: 1 }}
             >
-                <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white active:scale-95 rounded-lg px-7 h-11">
+                <Link to={'/chat'} className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white active:scale-95 rounded-lg px-7 h-11">
                     Get started
                     <ArrowRight size={20} />
-                </button>
+                </Link>
                 <button className="border border-slate-400 active:scale-95 hover:bg-white/10 transition rounded-lg px-8 h-11">
                     Book a demo
                 </button>

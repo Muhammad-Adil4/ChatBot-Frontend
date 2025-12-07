@@ -26,7 +26,7 @@ export default function Navbar() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
             >
-                <Link to="#">
+                <Link to="#" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                     <img className="h-9 w-auto" src="/assets/logo.svg" width={138} height={36} alt="logo" />
                 </Link>
 
@@ -39,12 +39,12 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden lg:flex items-center gap-3">
-                    <button className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md active:scale-95 transition">
+                    <Link to={'/signup'} state={{ mode: "signup" }} className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md active:scale-95 transition">
                         Get started
-                    </button>
-                    <button className="px-6 py-2 border border-slate-400 rounded-md hover:bg-slate-300/20 active:scale-95 transition">
+                    </Link>
+                    <Link to={'/login'} state={{ mode: "login" }}  className="px-6 py-2 border border-slate-400 rounded-md hover:bg-slate-300/20 active:scale-95 transition">
                         Login
-                    </button>
+                    </Link>
                 </div>
 
                 <button

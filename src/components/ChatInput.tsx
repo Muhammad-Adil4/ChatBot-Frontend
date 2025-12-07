@@ -26,10 +26,11 @@ export const ChatInput: React.FC<ChatInputProps> = ({ input, setInput, onSend, d
   };
 
   return (
-    <div className="absolute bottom-0 left-0 w-full bg-white pt-2 pb-6 px-4">
+    <div className="absolute bottom-0 left-0 w-full bg-[#0e0f12] pt-2 pb-2 px-4">
       <div className="max-w-4xl mx-auto relative">
-        <div className="bg-[#f0f4f9] rounded-[2rem] flex items-end p-2 md:p-3 shadow-inner focus-within:ring-1 focus-within:ring-blue-200 transition-all">
-          <button className="p-3 text-gray-500 hover:bg-gray-200 rounded-full transition-colors hidden md:block">
+        <div className="bg-[#1c1f24] rounded-[2rem] flex items-end p-2 md:p-3 shadow-inner focus-within:ring-1 focus-within:ring-blue-600 transition-all">
+          
+          <button className="p-3 text-gray-400 hover:bg-gray-700 rounded-full transition-colors hidden md:block">
             <Plus size={20} />
           </button>
 
@@ -40,7 +41,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ input, setInput, onSend, d
             onKeyDown={handleKeyDown}
             placeholder="Enter a prompt here"
             rows={1}
-            className="flex-1 bg-transparent border-none focus:ring-0 resize-none py-3 px-2 md:px-4 max-h-48 overflow-y-auto text-gray-800 placeholder-gray-500"
+            className="flex-1 bg-transparent border-none focus:ring-0 resize-none py-3 px-2 md:px-4 max-h-48 overflow-y-auto text-gray-200 placeholder-gray-500 outline-none"
           />
 
           <div className="flex items-center gap-1 pb-1">
@@ -50,7 +51,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ input, setInput, onSend, d
               className={`p-3 rounded-full transition-all duration-300 ${
                 input.trim() 
                   ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md' 
-                  : 'bg-transparent text-gray-400 cursor-not-allowed'
+                  : 'bg-transparent text-gray-500 cursor-not-allowed'
               }`}
             >
               <Send size={20} />
@@ -59,7 +60,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ input, setInput, onSend, d
         </div>
         
         <div className="text-center mt-2">
-           <p className="text-[10px] md:text-xs text-gray-400">
+           <p className="text-[10px] md:text-xs text-gray-500">
              Gemini may display inaccurate info, including about people, so double-check its responses.
            </p>
         </div>
